@@ -11,8 +11,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu" # check if NVIDIA device
 model = MODELS["vgg16"].to(DEVICE) # sending model to device
 learning_rate = 0.001
 epochs = 5 # what is an epoch?
-batch_size = 128 
-criterion = nn.CrossEntropyLoss() # why this loss function?: https://www.analyticsvidhya.com/blog/2022/08/basic-introduction-to-loss-functions/
+batch_size = # TODO: CHOOSE A BATCH SIZE, WHAT IS IT EVEN?
+criterion =  # TODO: WHAT LOSS FUNCTION DO WE USE? WHAT EVEN IS A LOSS FUNCTION? https://pytorch.org/docs/stable/nn.html#loss-functions https://www.analyticsvidhya.com/blog/2022/08/basic-introduction-to-loss-functions/
 optimizer = optim.Adam(model.parameters(), lr = learning_rate) # what's an optimizer?
 
 # number of parameters in the model
@@ -34,8 +34,7 @@ val_transform = transforms.Compose([
 
 # Create datasets for training and validation
 train_dataset = MyDataset(data_dir='chest_xray/train', transform=train_transform)
-val_dataset = MyDataset(data_dir='chest_xray/val', transform=val_transform)
-test_dataset = MyDataset(data_dir='chest_xray/test', transform=val_transform)
+val_dataset = # TODO: CREATE THE VAL DATASET NOW!
 
 # Create data loaders for batching
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
@@ -48,7 +47,7 @@ if not os.path.exists("checkpoints"):
 
 best_val_acc = 0 # to keep track of best validation accuracy
 
-for epoch in range(epochs):
+# TODO: WRITE THE FOR LOOP EXPRESSION!
     # run training loop
     print("[INFO] starting training epoch {}".format(str(epoch+1)))
     loss = train(model, optimizer, criterion, train_loader, DEVICE)

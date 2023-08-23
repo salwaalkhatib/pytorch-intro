@@ -36,8 +36,8 @@ def train(model, optimizer, criterion, train_loader, DEVICE):
         optimizer.zero_grad()  # Zero the gradients
         
         # Forward pass
-        outputs = model(inputs)
-        loss = criterion(outputs, labels)
+        outputs = # TODO: FEED INPUTS TO THE MODEL
+        loss = criterion(, ) # TODO: WHAT DO YOU FEED?
         
         # Backpropagation and optimization
         loss.backward()
@@ -47,7 +47,7 @@ def train(model, optimizer, criterion, train_loader, DEVICE):
     return running_loss / len(train_loader)
 
 def validate(model, val_loader, DEVICE):
-    model.eval()  # Set the model to evaluation mode
+    # TODO: Set the model to evaluation mode
     correct = 0
     total = 0
     with torch.no_grad():

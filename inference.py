@@ -14,7 +14,7 @@ test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=1, shuffle=Fa
 
 # load best checkpoint
 model = MODELS["vgg16"].to(DEVICE)
-model = load_checkpoint(model, "checkpoints/best_model.pth")
+#TODO: LOAD THE BEST WEIGHTS INTO THE MODEL WITH load_checkpoint
 
 # inference
 acc = validate(model, test_loader, DEVICE)
