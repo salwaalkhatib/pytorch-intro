@@ -1,19 +1,17 @@
 import os
-import numpy as np
 import torch # PyTorch package
 import torchvision.transforms as transforms # transform data
-import torch.nn as nn # basic building block for neural neteorks
-import torch.nn.functional as F # import convolution functions like Relu
+import torch.nn as nn # basic building block for neural networks
 import torch.optim as optim # optimzer
 from dataset.mydataset import MyDataset
 from utils import *
 
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu" # check if NVIDIA device is visible to torch
 
-model = MODELS["resnet"].to(DEVICE)
+model = MODELS["vgg16"].to(DEVICE) # sending model to device
 learning_rate = 0.001
-epochs = 5
-batch_size = 128
+epochs = 5 # what is an epoch?
+batch_size = 128 
 criterion = nn.CrossEntropyLoss() # why this loss function?: https://www.analyticsvidhya.com/blog/2022/08/basic-introduction-to-loss-functions/
 optimizer = optim.Adam(model.parameters(), lr = learning_rate) # what's an optimizer?
 
@@ -23,15 +21,15 @@ print("[INFO] number of parameters in the model: {}".format(sum(p.numel() for p 
 # Create transformations to apply to each image
 train_transform = transforms.Compose([
 	transforms.RandomHorizontalFlip(),  # Randomly flip images horizontally: More on data augmentation
-    transforms.Resize((224, 224)), # Resize images to 128x128
+    transforms.Resize((224, 224)), # Resize images to 224x224
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]), # ImageNet normalization, why?
 ])
 
 val_transform = transforms.Compose([
-    transforms.Resize((224, 224)), # Resize images to 128x128
+    transforms.Resize((224, 224)), # Resize images to 224x224
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]), # ImageNet normalization, why?
 ])
 
 # Create datasets for training and validation

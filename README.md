@@ -1,3 +1,4 @@
+## PyTorch Intro
 ### Environment Installation
 
 Run the following to create the environment:
@@ -13,4 +14,4 @@ Run the following to create the environment:
 
 ### Dataset:
 
-Download the dataset from Kaggle using the guide under dataset/download_dataset.txt
+Download the dataset from [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) using the guide under <code>dataset/download_dataset.txt</code>
