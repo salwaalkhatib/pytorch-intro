@@ -16,7 +16,8 @@ class MyDataset(Dataset):
 
     def __getitem__(self, idx):
         img_name = self.files[idx]
-        cls ='PNEUMONIA' if 'person' in img_name else 'NORMAL'
+        # determine the class of the image  
+        cls = 'PNEUMONIA' if 'person' in img_name else 'NORMAL'
         img_path = os.path.join(self.data_dir, cls, img_name)
         # Load the image using PIL (Pillow) library
         image = Image.open(img_path).convert("RGB")  # Convert to RGB format

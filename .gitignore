@@ -1,2 +1,4 @@
 chest_xray/*
 dataset/__pycache__/*
+checkpoints/*
+__pycache__/*

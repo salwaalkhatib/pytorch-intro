@@ -13,7 +13,7 @@ test_dataset = MyDataset(data_dir='chest_xray/test', transform=val_transform)
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=1, shuffle=False)
 
 # load best checkpoint
-model = MODELS["mobilenet"].to(DEVICE)
+model = MODELS["resnet"].to(DEVICE)
 model = load_checkpoint(model, "checkpoints/best_model.pth")
 
 # inference
